@@ -12,9 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.5"></ListView>
+    <Button
+        android:id="@+id/bt_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Atualizar" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/bt_cadastro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cadastrar" />

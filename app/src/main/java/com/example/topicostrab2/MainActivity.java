@@ -29,12 +29,13 @@ public class MainActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private ProductService service;
     private Button btCadastrar;
+    private Button btRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btCadastrar = findViewById(R.id.bt_cadastrar);
+        inicializa();
         btCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,13 +43,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(it);
             }
         });
-        listProducts = findViewById(android.R.id.list);
-        retrofit = new Retrofit.Builder()
-                .baseUrl("https://guisfco-online-shopping-api.herokuapp.com/api/online-shopping/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        service = retrofit.create(ProductService.class);
-        service .listProducts().enqueue(new Callback<ArrayList<Product>>() {
+        btRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(getIntent());
+            }
+        });
+        service.listProducts().enqueue(new Callback<ArrayList<Product>>() {
             @Override
             public void onResponse(Call<ArrayList<Product>> call, Response<ArrayList<Product>> response) {
                 if(response.isSuccessful()){
@@ -77,5 +79,16 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,"Verifique sua internet",Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void inicializa() {
+        btCadastrar = findViewById(R.id.bt_cadastro);
+        btRefresh = findViewById(R.id.bt_refresh);
+        listProducts = findViewById(android.R.id.list);
+        retrofit = new Retrofit.Builder()
+                .baseUrl("https://guisfco-online-shopping-api.herokuapp.com/api/online-shopping/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        service = retrofit.create(ProductService.class);
     }
 }
