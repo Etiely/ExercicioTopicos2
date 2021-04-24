@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ProductActivity">
+    tools:context=".CadastrarActivity">
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ti_editar_name"
+            android:id="@+id/et_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name" />
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ti_editar_descricao"
+            android:id="@+id/et_descricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Descrição" />
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ti_editar_preco"
+            android:id="@+id/et_preco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Preço" />
@@ -47,18 +47,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ti_editar_imageUrl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Image Url" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ti_editar_stockLevel"
+            android:id="@+id/et_stockLevel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Stock Level"/>
@@ -71,14 +60,9 @@
         android:hint="Ativo"></com.google.android.material.checkbox.MaterialCheckBox>
 
     <Button
-        android:id="@+id/bt_editar"
+        android:id="@+id/bt_cadastrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Editar" />
-    <Button
-        android:id="@+id/bt_excluir"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Excluir" />
+        android:text="Cadastrar" />
 
 </LinearLayout>

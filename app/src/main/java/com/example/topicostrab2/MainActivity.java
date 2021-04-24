@@ -2,7 +2,10 @@ package com.example.topicostrab2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -46,6 +49,14 @@ public class MainActivity extends AppCompatActivity {
                                     .map(product -> new StringBuilder(product.getName() + " : " + product.getDescription()))
                                     .collect(Collectors.toList())
                     ));
+                    listProducts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            Intent it = new Intent(MainActivity.this, ProductActivity.class);
+                            it.putExtra("product", response.body().get(i));
+                            startActivity(it);
+                        }
+                    });
                 }else{
                     Toast.makeText(MainActivity.this,"Erro no cadastro de produto",Toast.LENGTH_SHORT).show();
                 }
