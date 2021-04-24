@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,11 +28,20 @@ public class MainActivity extends AppCompatActivity {
     private ListView listProducts;
     private Retrofit retrofit;
     private ProductService service;
+    private Button btCadastrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        btCadastrar = findViewById(R.id.bt_cadastrar);
+        btCadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(MainActivity.this, CadastrarActivity.class);
+                startActivity(it);
+            }
+        });
         listProducts = findViewById(android.R.id.list);
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://guisfco-online-shopping-api.herokuapp.com/api/online-shopping/")
